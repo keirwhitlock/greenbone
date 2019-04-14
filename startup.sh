@@ -2,6 +2,7 @@
 
 echo "Re-syncing nvt vulnerabilities"
 greenbone-nvt-sync
+/usr/local/sbin/greenbone-scapdata-sync
 
 echo "Start the redis server"
 /usr/bin/redis-server /openvas-scanner/build/doc/redis_config_examples/redis_3_2.conf & 

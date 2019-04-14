@@ -64,6 +64,7 @@ RUN pip3 install .
 
 # Sync latest threats
 RUN greenbone-nvt-sync
+RUN /usr/local/sbin/greenbone-scapdata-sync
 
 EXPOSE 80
 EXPOSE 443
