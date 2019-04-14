@@ -1,5 +1,7 @@
 FROM debian:stretch
 
+ENV LD_LIBRARY_PATH /usr/local/lib/
+
 RUN apt-get update; apt-get install curl gnupg apt-transport-https -y
 
 RUN curl --silent --show-error https://dl.yarnpkg.com/debian/pubkey.gpg |  apt-key add -
@@ -40,6 +42,7 @@ EXPOSE 80
 EXPOSE 443
 
 # Sync latest threats (always last)
+RUN echo $(date) > /dev/null
 RUN greenbone-nvt-sync
 
 # ENTRYPOINT [ "/usr/bin/redis-server" "/openvas-scanner/build/doc/redis_config_examples/redis_2_6.conf" "&" ]
