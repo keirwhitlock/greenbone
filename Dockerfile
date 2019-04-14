@@ -70,4 +70,4 @@ EXPOSE 443
 
 COPY startup.sh /startup.sh
 
-CMD startup.sh
+CMD ["bash", "/startup.sh"]
