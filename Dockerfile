@@ -38,13 +38,19 @@ WORKDIR /gsa/build
 RUN cmake ..
 RUN make install ..
 
+# OpenVas Greenbone Vulnerability Manager
+RUN apt-get install libsqlite3-dev libical-dev -y
+RUN git clone https://github.com/greenbone/gvmd.git /gvmd
+WORKDIR /gvmd
+RUN mkdir build
+WORKDIR /gvmd/build
+RUN cmake ..
+RUN make install ..
+
 EXPOSE 80
 EXPOSE 443
 
 # Sync latest threats (always last)
-RUN echo $(date) > /dev/null
 RUN greenbone-nvt-sync
 
-# ENTRYPOINT [ "/usr/bin/redis-server" "/openvas-scanner/build/doc/redis_config_examples/redis_2_6.conf" "&" ]
-# CMD [ "openvassd" ]
-CMD [ "bash" ]
+CMD /usr/bin/redis-server /openvas-scanner/build/doc/redis_config_examples/redis_3_2.conf && sleep 5 && openvassd -f
