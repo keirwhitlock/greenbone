@@ -15,3 +15,8 @@ gsad -v --ssl-private-key=/gsa/gsad/server.key --ssl-certificate=/gsa/gsad/serve
 
 echo "Start the management deamon in foreground mode"
 gvmd -f
+
+if [ ! -z "$GREENBONE_ADMIN_PASSWORD" ]; then
+    echo "Re-setting the 'administrator' password"
+    gvmd --user=administrator --new-password="$GREENBONE_ADMIN_PASSWORD"
+fi

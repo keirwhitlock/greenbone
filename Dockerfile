@@ -11,7 +11,7 @@ RUN echo "deb https://deb.nodesource.com/node_8.x stretch main" |  tee /etc/apt/
 RUN apt-get clean; apt-get update; apt-get install git cmake gcc pkg-config libssh-gcrypt-dev libgnutls28-dev libglib2.0-dev \
 libpcap-dev libhiredis-dev libhiredis0.13 uuid-dev libhiredis0.13 libgpgme-dev bison libksba-dev libsnmp-dev \
 libgcrypt20-dev clang-format nodejs yarn libmicrohttpd-dev libxml2-dev redis-server apt-utils wget curl rsync \
-texlive-fonts-recommended htop libsqlite3-dev libical-dev python3-pip xsltproc -y
+texlive-fonts-recommended htop libsqlite3-dev libical-dev python3-pip xsltproc nmap -y
 RUN apt-get install texlive-latex-extra --no-install-recommends -y
 
 # Required OpenVas Libs
