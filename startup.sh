@@ -13,10 +13,11 @@ openvassd
 echo "Start the HTTP/S GUI interface"
 gsad -v --ssl-private-key=/gsa/gsad/server.key --ssl-certificate=/gsa/gsad/server.crt
 
-echo "Start the management deamon in foreground mode"
-gvmd -f
-
 if [ ! -z "$GREENBONE_ADMIN_PASSWORD" ]; then
     echo "Re-setting the 'administrator' password"
     gvmd --user=administrator --new-password="$GREENBONE_ADMIN_PASSWORD"
 fi
+
+echo "Start the management deamon in foreground mode"
+gvmd -f
+
